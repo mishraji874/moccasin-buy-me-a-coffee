@@ -1,0 +1,43 @@
+[project]
+src = "src"
+out = "out"
+dot_env = ".env"
+
+[networks.pyevm]
+is_zksync = false
+
+[networks.anvil]
+url = "http://127.0.0.1:8545"
+prompt_live = false
+save_to_db = true
+chain_id = 31337
+default_account_name = "anvil1"
+# unsafe_password_file = "$ANVIL1_PASSWORD_FILE"
+
+[networks.sepolia]
+url = "https://ethereum-sepolia-rpc.publicnode.com"
+chain_id = 11155111
+save_to_db = false
+default_account_name = "default"
+explorer_uri = "https://eth-sepolia.blockscout.com/"
+explorer_type = "blockscout"
+
+[networks.zksync-sepolia]
+url = "https://sepolia.era.zksync.dev"
+chain_id = 300
+is_zksync = true
+prompt_live = true
+
+[networks.zksync-local]
+url = "http://127.0.0.1:8011"
+chain_id = 260
+save_to_db = true
+prompt_live = false
+is_zksync = true
+
+# You can view all configuration options at https://cyfrin.github.io/moccasin/all_moccasin_toml_parameters.html
+[networks.contracts]
+price_feed = { force_deploy = false, deployer_script = "deploy_mocks.py" }
+
+[networks.sepolia.contracts]
+price_feed = { address = "0x694AA1769357215DE4FAC081bf1f309aDC325306" }
